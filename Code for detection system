@@ -1,0 +1,28 @@
+int gaspin=A3;
+int gass;
+int li;
+int litpin=11;
+int detpin=13;
+void setup()
+{
+  # assigning roles to pins as input or output
+  pinMode(gaspin, INPUT);
+  pinMode(litpin,OUTPUT);
+  pinMode(detpin,OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+ gass= analogRead(gaspin);    
+  if(gass>=86){  # raise alaram only if gas concentration exceeds a threshold
+    
+    digitalWrite(detpin,HIGH);}
+  else digitalWrite(detpin,LOW);
+  li=map(gass,85,380,0,255); #mapping sensor value to analog values
+  analogWrite(litpin,li);
+    Serial.println(gass);
+
+  
+  delay(100);
+}
